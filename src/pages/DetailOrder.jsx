@@ -69,15 +69,15 @@ function DetailOrder() {
                   
                 </div>
                 <hr />
-                {order.paymentStatus ? null : (
-                  <button onClick={() => {setOpenModal('default')}} className='text-white py-2 px-4 bg-red-600 rounded hover:bg-red-700 active:bg-red-800 mt-4 font-medium'>Confirm Payment</button>
-                )}
               </>
             ) : (
               null
             )}
           </div>
-          <div className='flex justify-end'>
+          <div className='flex justify-between mt-4'>
+            {order?.paymentStatus ? null : (
+              <button onClick={() => {setOpenModal('default')}} className='text-white py-2 px-4 bg-red-600 rounded hover:bg-red-700 active:bg-red-800 font-medium'>Confirm Payment</button>
+            )}
             <Link to={'/cashier'} className="font-medium bg-yellow-300 py-2 px-4 rounded hover:bg-slate-300">Back</Link>
           </div>
           <Modal position='center' size={'sm'} show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)}>

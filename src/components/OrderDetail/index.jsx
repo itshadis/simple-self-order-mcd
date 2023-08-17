@@ -22,15 +22,15 @@ function OrderDetail({ id }) {
       <div className='flex flex-col justify-between'>
         <ul className='my-4'>
           <div className='flex justify-between font-medium mb-2'>
-            <div className='flex gap-10'>
+            <div className='flex gap-5 lg:gap-10'>
               <span>Qty</span>
               <p>Menu</p>
             </div>
             <span>Total</span>
           </div>
           {order?.menu.map((item, i) => (
-            <li key={i} className='flex justify-between items-center'>
-              <div className='flex gap-10 items-center'>
+            <li key={i} className='flex justify-between items-center text-sm lg:text-base'>
+              <div className='flex gap-6 lg:gap-10 items-center'>
                 <span>{item.qty}x</span>
                 <p>{item.name}</p>
               </div>
@@ -41,7 +41,7 @@ function OrderDetail({ id }) {
         <hr />
         <div className='flex justify-between mt-2'>
           <span className='font-medium'>Total</span>
-          <span>{order?.totalPrice}</span>
+          <span>Rp. {order?.totalPrice}</span>
         </div>
         <div className='flex justify-between mt-2'>
           <span className='font-medium'>Order Id</span>

@@ -67,7 +67,7 @@ function Cashier() {
                   </Table.Cell>
                   <Table.Cell className=''>
                     {order.paymentStatus ? (
-                      <p className='py-2 text-white bg-blue-600 rounded text-center'>Complete</p>
+                      <p className='py-2 px-1 text-white bg-blue-600 rounded text-center'>Complete</p>
                     ) : (
                       <p className='py-2 text-white bg-red-600 rounded text-center'>Pending</p>
                     )}
