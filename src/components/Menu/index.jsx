@@ -79,7 +79,7 @@ function Category({path}) {
         <form onSubmit={handleSubmit}>
           <Modal.Header className="bg-red-600"><p className="text-white">{detailMenu?.name}</p></Modal.Header>
           <Modal.Body>
-              <div className="space-y-6 flex gap-3">
+              <div className="lg:space-y-6 flex gap-3">
                 <div className="flex flex-col items-center justify-center gap-2">
                   <img className="w-32 lg:w-60" src={imgURL+detailMenu?.img} alt={detailMenu?.img} />
                   <div>
