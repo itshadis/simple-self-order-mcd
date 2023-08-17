@@ -38,13 +38,13 @@ function DetailOrder() {
     <>
       <Link to={'/'} className='absolute text-white font-medium bg-emerald-500 py-2 px-4 rounded left-2 top-2 hover:bg-emerald-600'>Customer Side</Link>
 
-      <main className="relative w-[50%] h-screen flex flex-col mx-auto justify-center">
+      <main className="relative w-[95%] lg:w-[50%] h-screen flex flex-col mx-auto justify-center">
         <h4 className='w-full mx-auto text-lg font-medium mb-2'>Order Detail</h4>
         <div className="w-full mx-auto h-[80%] p-10 border border-black rounded mb-2 overflow-auto">
-          <Link to={'/cashier'} className="absolute font-medium bg-yellow-300 py-2 px-4 rounded hover:bg-slate-300 bottom-16 right-4">Back</Link>
+          <Link to={'/cashier'} className="absolute font-medium bg-yellow-300 py-2 px-4 rounded hover:bg-slate-300 bottom-24 lg:bottom-16 right-4">Back</Link>
           {order? (
             <>
-              <h2 className='font-medium'>Order ID : <span className='text-base font-normal'>{order.orderId}</span>
+              <h2 className='font-medium mb-2'>Order ID : <span className='text-base font-normal'>{order.orderId}</span>
               </h2>
               <h2 className='font-medium'>Menu</h2>
               {order.menu.map((item, i) => (
@@ -83,9 +83,9 @@ function DetailOrder() {
                 <p className='text-center'>Confirm this order payment?</p>
               </div>
               <div className='flex gap-5 justify-center'>
-                <Button className='bg-red-600' onClick={handleConfirm}>I accept</Button>
+                <Button className='bg-red-600' onClick={handleConfirm}>Confirm</Button>
                 <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
-                  Decline
+                  Cancel
                 </Button>
               </div>
             </Modal.Body>

@@ -67,7 +67,7 @@ function Category({path}) {
 
   return (
     <>
-      <div className="w-full h-full grid grid-cols-3 gap-6 p-2 border border-black rounded overflow-auto justify-items-center">
+      <div className="w-full h-full grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-6 lg:p-2 border border-black rounded overflow-auto justify-items-center">
         {menu?.map((item, i) => (
           <button key={i}  onClick={() => handleClick(item)}>
             <Card img={imgURL+item.img} name={item.name} />
@@ -80,8 +80,8 @@ function Category({path}) {
           <Modal.Header className="bg-red-600"><p className="text-white">{detailMenu?.name}</p></Modal.Header>
           <Modal.Body>
               <div className="space-y-6 flex gap-3">
-                <div className="flex flex-col items-center gap-2">
-                  <img className="w-60" src={imgURL+detailMenu?.img} alt={detailMenu?.img} />
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <img className="w-32 lg:w-60" src={imgURL+detailMenu?.img} alt={detailMenu?.img} />
                   <div>
                     <p className="text-center mb-1">Order</p>
                     <div className="flex justify-center gap-5">

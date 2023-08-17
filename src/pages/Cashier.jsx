@@ -31,12 +31,12 @@ function Cashier() {
 
   return (
     <>
-      <Link to={'/'} className='absolute text-white font-medium bg-emerald-500 py-2 px-4 rounded left-2 top-2 hover:bg-emerald-600'>Customer Side</Link>
+      <Link to={'/'} className='absolute text-white font-medium bg-emerald-500 py-1 lg:py-2 px-2 lg:px-4 rounded left-2 top-2 hover:bg-emerald-600'>Customer Side</Link>
 
-      <main className="w-[80%] h-screen flex flex-col mx-auto justify-between">
+      <main className="w-[95%] h-screen flex flex-col mx-auto lg:justify-between">
         <Header />
-        <h4 className='w-[80%] mx-auto text-lg font-medium'>List Orders</h4>
-        <div className="w-[80%] mx-auto h-[70%] p-4 border border-black rounded mb-2 overflow-auto">
+        <h4 className='w-full lg:w-[80%] mx-auto text-lg font-medium'>List Orders</h4>
+        <div className="w-full lg:w-[80%] mx-auto h-[70%] p-4 border border-black rounded mb-2 overflow-auto">
           <form onSubmit={handleSearch} className='mb-2 flex gap-2'>
             <input onChange={(e) => setInput(e.target.value)} className='rounded-lg ' type="text" placeholder='Search Order ID' />
             <button className='font-medium py-2 px-4 bg-slate-400 rounded-lg hover:bg-slate-500' type='submit'>Search</button>

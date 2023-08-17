@@ -40,10 +40,10 @@ function Order() {
     }
 
   return (
-    <main className="w-[50%] h-screen flex flex-col mx-auto">
+    <main className="w-[95%] lg:w-[50%] h-screen flex flex-col mx-auto">
       <h1 className="text-5xl font-bold text-center py-6">Order Details</h1>
-      <div className="flex flex-col justify-between border border-black rounded h-[80%]">
-        <div className="flex flex-col gap-3 py-2 px-6 overflow-auto">
+      <div className="flex flex-col justify-between border border-black rounded h-[85%] lg:h-[80%]">
+        <div className="flex flex-col gap-3 py-2 px-2 lg:px-6 overflow-auto">
           {state.menu.length === 0 ? (
             <p className="text-lg font-medium text-center">You have not order yet...</p>
           ) : 
@@ -53,10 +53,10 @@ function Order() {
             state.menu?.map((order, i) => (
             <div key={i} className="flex items-center gap-2 border border-slate-400 p-2 rounded">
               <img className="w-24" src={imgURL+order.img} alt={imgURL+order.img} />
-              <p className="text-lg flex-1">{order.name}</p>
-              <div className="flex items-center gap-10">
+              <p className="text-sm lg:text-lg flex-1">{order.name}</p>
+              <div className="flex items-center gap-5 lg:gap-10">
                 <span className="text-xl">{order.qty}x</span>
-                <button onClick={() => handleRemoveClick(order)} className="text-lg text-white bg-red-600 p-2 rounded hover:bg-red-700"><img className="w-5" src="./trash.svg" alt="trash.svg" /></button>
+                <button onClick={() => handleRemoveClick(order)} className="text-lg text-white bg-red-600 p-2 rounded hover:bg-red-700"><img className="w-4 lg:w-5" src="./trash.svg" alt="trash.svg" /></button>
               </div>
             </div>
           ))
