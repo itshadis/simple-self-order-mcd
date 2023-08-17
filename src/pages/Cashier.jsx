@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import axios from 'axios';
 import { Table } from 'flowbite-react'
@@ -7,9 +7,12 @@ import { Table } from 'flowbite-react'
 const baseURL = import.meta.env.VITE_BASE_URL;
 
 function Cashier() {
+  const [input, setInput] = useState();
   const [orders, setOrders] = useState();
-  const title = ['No', 'Order ID', 'Total Order', 'Total Prices', 'Status Payment'];
+  const title = ['No', 'Order ID', 'Total Order', 'Total Prices', 'Status Payment', ''];
   let no = 1;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getOrders = async () => {
@@ -20,7 +23,11 @@ function Cashier() {
     getOrders();
   }, []);
 
-  console.log(orders)
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    navigate(`/order/${input}`)
+  }
 
   return (
     <>
@@ -28,8 +35,12 @@ function Cashier() {
 
       <main className="w-[80%] h-screen flex flex-col mx-auto justify-between">
         <Header />
-        <div className="relative w-[80%] mx-auto h-[70%] p-4 border border-black rounded mb-2">
-          <h4 className='absolute -top-7 left-1 text-lg font-medium'>List Orders</h4>
+        <h4 className='w-[80%] mx-auto text-lg font-medium'>List Orders</h4>
+        <div className="w-[80%] mx-auto h-[70%] p-4 border border-black rounded mb-2 overflow-auto">
+          <form onSubmit={handleSearch} className='mb-2 flex gap-2'>
+            <input onChange={(e) => setInput(e.target.value)} className='rounded-lg ' type="text" placeholder='Search Order ID' />
+            <button className='font-medium py-2 px-4 bg-slate-400 rounded-lg hover:bg-slate-500' type='submit'>Search</button>
+          </form>
 
           <Table>
             <Table.Head>
@@ -41,7 +52,7 @@ function Cashier() {
             </Table.Head>
             <Table.Body className="divide-y">
               {orders?.map((order, i) => (
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                <Table.Row className="bg-white text-center dark:border-gray-700 dark:bg-gray-800">
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                     {no++}
                   </Table.Cell>
@@ -54,12 +65,15 @@ function Cashier() {
                   <Table.Cell>
                     {order.totalPrice}
                   </Table.Cell>
-                  <Table.Cell>
+                  <Table.Cell className=''>
                     {order.paymentStatus ? (
-                      <span className='py-2 px-4 text-white bg-red-600'>Unpaid</span>
+                      <p className='py-2 text-white bg-blue-600 rounded text-center'>Complete</p>
                     ) : (
-                      <span className='py-2 px-4 text-white bg-blue-600'>Paid</span>
+                      <p className='py-2 text-white bg-red-600 rounded text-center'>Pending</p>
                     )}
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Link to={`/order/${order.orderId}`} className='text-white bg-emerald-600 py-2 px-2 rounded hover:bg-emerald-700'>Detail</Link>
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -71,4 +85,4 @@ function Cashier() {
   )
 }
 
-export default Cashier
+export default Cashier;
